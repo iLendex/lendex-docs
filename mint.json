@@ -7,9 +7,9 @@
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#ff0000",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#FD3321",
+    "light": "#FD3321",
+    "dark": "#FD3321",
     "anchors": {
       "from": "#0D9373",
       "to": "#07C983"
@@ -44,8 +44,10 @@
       ]
     }
   ],
-  "footerSocials": {
-    "x": "https://twitter.com/lendex_app",
-    "github": "https://github.com/iLendex"
+  "footer": {
+    "socials": {
+      "x": "https://twitter.com/lendex_app",
+      "github": "https://github.com/iLendex"
+    }
   }
 }
