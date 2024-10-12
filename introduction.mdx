@@ -1,71 +1,64 @@
 ---
 title: Introduction
-description: 'Welcome to the home of your new documentation'
+description: 'he cross chain lending protocol for Web3. Cross chain interoperability and liquidity growth. ⚡️ LEND your assets from ETH to ADA securely!'
 ---
 
 <img
   className="block dark:hidden"
-  src="/images/hero-light.svg"
-  alt="Hero Light"
+  src="/images/hero.png"
+  alt="Lendex"
 />
 <img
   className="hidden dark:block"
-  src="/images/hero-dark.svg"
-  alt="Hero Dark"
+  src="/images/hero.png"
+  alt="Lendex"
 />
 
 ## Setting up
 
-The first step to world-class documentation is setting up your editing environments.
+### Wallet Setup
 
-<CardGroup cols={2}>
-  <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
-  >
-    Get your docs set up locally for easy development
-  </Card>
-  <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
-  </Card>
-</CardGroup>
+To interact with **Lendex**, users must first have the following wallets set up:
 
-## Make it yours
+1. **EVM-Compatible Wallet**: An EVM wallet, such as **MetaMask**, is required to manage assets and interact with the Ethereum blockchain. Users can download and install MetaMask as a browser extension. Once installed, they can create or import an existing wallet to connect it with Lendex.
 
-Update your docs to your brand and add valuable content for the best user conversion.
+2. **Cardano Wallet**: A compatible Cardano wallet is necessary for interacting with the Cardano blockchain. Users can choose from supported Cardano wallets, such as **Nami** or **Eternl**. After setting up the wallet, users should connect it to Lendex to manage their Cardano-based assets seamlessly.
 
-<CardGroup cols={2}>
-  <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
-  >
-    Automatically generate endpoints from an OpenAPI spec
-  </Card>
-  <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/components/accordion"
-  >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/customers"
-  >
-    Check out our showcase of our favorite documentation
-  </Card>
-</CardGroup>
+Both wallets are essential for participating in the cross-chain functionality of **Lendex**, enabling users to lend, borrow, and manage assets across Ethereum and Cardano blockchains.
+
+
+### Supported Assets
+
+At present, **Lendex** allows users to participate in lending and borrowing activities using **Ethereum NFT** as collateral. These NFTs, which are unique digital assets on the Ethereum blockchain, can be used to secure loans. Borrowers can request **ADA (Cardano’s native currency)** in exchange for using their NFTs as collateral.
+
+Key points:
+- **Collateral Type**: ERC721 NFTs from the Ethereum blockchain are the only supported collateral at this time.
+- **Loan Currency**: Borrowers request **ADA** as the loan currency, which they receive upon the approval of their loan requests.
+- **Cross-Chain Interaction**: This functionality highlights the cross-chain capability of **Lendex**, enabling users to use Ethereum-based NFTs to access liquidity in ADA from the Cardano blockchain.
+
+> **Important**: Additional assets and blockchains will be supported in future releases to expand the range of available collateral and loan types.
+
+### How It Works
+
+**Lendex** is a decentralized lending protocol that allows users on the Ethereum blockchain (EVM) to borrow ADA using their NFTs as collateral. The flow of the lending process is as follows:
+
+#### Borrow Token
+
+- An user with **NFT** who wishes to borrow **ADA** sets their desired borrow amount, deadline, and repayment terms (APY). They then send their NFT to **Lendex** smart contract while waiting for a Cardano lender to accept the offer.
+
+- If no lenders accept the deal, the borrower can choose to remove their offer. This action effectively returns the NFT to the original **NFT** smart contract, reinstating the borrower as the owner.
+
+- If a Cardano user decides to accept the deal, they mint a token on the **Lendex** Cardano blockchain. This token serves as **proof** for the **Chainlink Oracle**, confirming that the lender has accepted the agreement and paid the requested amount to the borrower. **Chainlink Oracle** will verify that the token has been minted on Cardano, ensuring it meets the borrower’s specified requirements (e.g., amount, fee, deadline). At this point, the borrower cannot withdraw their NFT until the debt is paid.
+
+#### Pay Token Debt
+
+- To repay the debt, the borrower submits a transaction on Cardano with a payment for the **ADA** owed (including fees) to the lender and a request to burn the NFT in the Cardano blockchain. The Cardano smart contract will only allow the NFT to be burned if the transaction includes the payment to the lender.
+
+- After the transaction, the **Chainlink Oracle** checks that the token has been burned. If the verification is successful, it updates the NFT status in the Lendex EVM contract.
+
+#### Claim Token
+
+- If the borrower has paid he can retrieve their NFT from **Lendex** EVM Contract.
+
+- In the event of a default (where the debt remains unpaid), and the expiry time specified in the offer has passed, the lender (Cardano user) can claim the NFT for themselves. The NFT will be sent to their EVM wallet (e.g MetaMask).
+
